@@ -1,13 +1,14 @@
 import random
-from items import *
+from items_weapons import *
 
 
 class Player:
-    def __init__(self, name, inventory):
+    def __init__(self, name):
         self.name = name
-        self.inventory = inventory
+        self.inventory = Inv()
         self.hp = 7
         self.max_hp = 10
+        self.equipped = None
 
     def use_item(self, item):
         for i in self.inventory.items:
@@ -47,6 +48,5 @@ class Inv:
                     continue
 
 
-player = Player('Matt', Inv())
+player = Player('Matt')
 i = Item()
-
