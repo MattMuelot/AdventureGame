@@ -1,5 +1,7 @@
 import random
 from items_weapons import *
+import time
+from rooms import Room
 
 
 class Player:
@@ -34,19 +36,19 @@ class Inv:
         else:
             choice = input('Inventory Full - Make Room? Y/N: ').upper()
             if choice == 'Y':
-                pass
+                self.drop_item()
             else:
                 print(f'Dropping {item.name}')
 
-    def drop_item(self, item):
+    def drop_item(self):
         for i in self.items:
-            if item.name == i.name:
-                choice = input(f'Drop {i.name}?Y/N: ').upper()
-                if choice == 'Y':
-                    self.items.remove(i)
-                else:
-                    continue
+            choice = input(f'{i.name} - HP: {i.hp}')
 
 
-player = Player('Matt')
-i = Item()
+# player = Player(input('Hello! What is your name?: ').title())
+# while True:
+#     option = input('Check (R)oom | Check (I)tems | Check (W)eapons | (E)quip Weapon | >: ').upper()
+#     if option == 'R':
+#         r = Room()
+#         if r.enemy is None:
+#             print('No enemies! Now lets check for loot')
