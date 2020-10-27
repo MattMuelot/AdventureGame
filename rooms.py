@@ -1,9 +1,9 @@
 import random
-from items_weapons import *
-from enemies import Enemy
+from items_weapons import Item, Weapon
+from player_and_inv import Enemy
 
 
-class Room:
+class CreateRoom:
     def __init__(self):
         self.room_type = random.choice(['enemy', 'empty', 'loot'])
         self.loot = []
@@ -15,4 +15,7 @@ class Room:
             for _ in range(num_of_items):
                 self.loot.append(Item())
         elif self.room_type == 'enemy':
-            self.enemy = Enemy()
+            pass
+
+
+r = CreateRoom()

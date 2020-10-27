@@ -1,7 +1,7 @@
 import random
 from items_weapons import *
 import time
-from rooms import Room
+from rooms import CreateRoom
 
 
 class Player:
@@ -23,6 +23,14 @@ class Player:
                         print('Failure - HP ERROR')
                 elif choice == 'N':
                     continue
+
+
+class Enemy:
+    def __init__(self):
+        self.hp = 3
+        self.xp = 3
+        self.attack = 3
+        self.inventory = Inv()
 
 
 class Inv:
@@ -49,6 +57,10 @@ class Inv:
 # while True:
 #     option = input('Check (R)oom | Check (I)tems | Check (W)eapons | (E)quip Weapon | >: ').upper()
 #     if option == 'R':
-#         r = Room()
+#         r = Room().load_room()
 #         if r.enemy is None:
 #             print('No enemies! Now lets check for loot')
+
+
+r = CreateRoom()
+
