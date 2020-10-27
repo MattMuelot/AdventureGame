@@ -7,6 +7,7 @@ class Player:
         self.inventory = Inv()
         self.hp = 7
         self.max_hp = 10
+        self.attack = 2
         self.equipped = None
 
     def use_item(self, item):
@@ -52,9 +53,9 @@ class Inv:
 
 class Room:
     def __init__(self):
-        self.room_type = random.choice(['enemy', 'empty', 'loot'])
-        self.loot = []
-        self.enemy = None
+        self.room_type = random.choice(['enemy', 'empty', 'loot', 'loot', 'enemy', 'enemy'])
+        self.loot = [random.choice([Item(), Weapon()]) for x in range(random.randint(1, 3))]
+        self.enemy = Enemy()
 
     def load_room(self):
         if self.room_type == 'loot':
@@ -80,7 +81,7 @@ class Item:
 
 class Weapon:
     def __init__(self):
-        self.name = random.choice('Club', 'Dagger', 'Sword', 'Spear')
+        self.name = random.choice(['Club', 'Dagger', 'Sword', 'Spear'])
         if self.name == 'Club':
             self.damage = 3
         elif self.name == 'Dagger':
