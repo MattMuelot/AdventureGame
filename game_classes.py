@@ -1,7 +1,4 @@
 import random
-from items_weapons import *
-import time
-from rooms import CreateRoom
 
 
 class Player:
@@ -53,14 +50,42 @@ class Inv:
             choice = input(f'{i.name} - HP: {i.hp}')
 
 
-# player = Player(input('Hello! What is your name?: ').title())
-# while True:
-#     option = input('Check (R)oom | Check (I)tems | Check (W)eapons | (E)quip Weapon | >: ').upper()
-#     if option == 'R':
-#         r = Room().load_room()
-#         if r.enemy is None:
-#             print('No enemies! Now lets check for loot')
+class Room:
+    def __init__(self):
+        self.room_type = random.choice(['enemy', 'empty', 'loot'])
+        self.loot = []
+        self.enemy = None
+
+    def load_room(self):
+        if self.room_type == 'loot':
+            num_of_items = random.randint(1, 3)
+            for _ in range(num_of_items):
+                self.loot.append(Item())
+        elif self.room_type == 'enemy':
+            pass
 
 
-r = CreateRoom()
+class Item:
+    def __init__(self):
+        self.name = random.choice(['Healing Potion', 'Bread', 'Apple', 'Beer'])
+        if self.name == 'Apple':
+            self.hp = 3
+        elif self.name == 'Bread':
+            self.hp = 5
+        elif self.name == 'Healing Potion':
+            self.hp = 100
+        elif self.name == 'Beer':
+            self.hp = 7
 
+
+class Weapon:
+    def __init__(self):
+        self.name = random.choice('Club', 'Dagger', 'Sword', 'Spear')
+        if self.name == 'Club':
+            self.damage = 3
+        elif self.name == 'Dagger':
+            self.damage = 4
+        elif self.name == 'Sword':
+            self.damage = 5
+        elif self.name == 'Spear':
+            self.damage = 7
